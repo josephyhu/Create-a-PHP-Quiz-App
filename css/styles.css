@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Playfair Display', serif;
-  background-color: #00008B;
+  background-color: #0000FF;
 }
 
 #quiz-box {
@@ -12,7 +12,7 @@ body {
   right: 10%;
   width: 80%;
   line-height: .5;
-  color: #FFFFFF;
+  color: #FFFF00;
 }
 
 .quiz {
