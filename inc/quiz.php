@@ -55,7 +55,3 @@ function restart() {
 }
 
 // Show score
-function showScore() {
-    global $score;
-    echo $score;
-}

@@ -10,7 +10,7 @@ for ($i = 0; $i <= 9; $i++) {
     $answer = $a + $b;
 // Get incorrect answers within 10 numbers either way of correct answer
 // Make sure it is a unique answer
-    if ($answer >= 10) {
+    if ($answer > 10) {
         $wrongAnswer1 = $answer - rand(1, 10);
         $wrongAnswer2 = $answer + rand(1, 10);
     } else {
