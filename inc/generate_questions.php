@@ -20,7 +20,6 @@ for ($i = 0; $i <= 9; $i++) {
               $wrongAnswer2++;
           }
     }
-}
 // Add question and answer to questions array
     $questions[$i]["leftAdder"] = $a;
     $questions[$i]["rightAdder"] = $b;
