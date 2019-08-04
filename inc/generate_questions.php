@@ -4,8 +4,8 @@ $questions = [];
 // Loop for required number of questions
 for ($i = 0; $i <= 9; $i++) {
 // Get random numbers to add
-    $a = rand(0, 100);
-    $b = rand(0, 100);
+    $a = rand(1, 100);
+    $b = rand(1, 100);
 // Calculate correct answer
     $answer = $a + $b;
 // Get incorrect answers within 10 numbers either way of correct answer
