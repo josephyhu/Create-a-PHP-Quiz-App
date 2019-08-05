@@ -17,9 +17,9 @@
 session_start();
 // Include questions
 include 'generate_questions.php';
-$score = 0;
 // Keep track of which questions have been asked
 $page = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
+$score = 0;
 if (empty($page)) {
     session_destroy();
     $page = 1;
@@ -34,7 +34,7 @@ function quiz() {
     $array = ["correctAnswer", "firstIncorrectAnswer", "secondIncorrectAnswer"];
     shuffle($array);
     echo "<p class='breadcrumbs'>Question " . $page . " of 10</p>";
-    echo "<p class='quiz'>" . "What is " . $questions[$page-1]["leftAdder"] . " + " . $questions[$page-1]["rightAdder"] . "?" . "</p>";
+    echo "<p class='quiz'>What is " . $questions[$page-1]["leftAdder"] . " + " . $questions[$page-1]["rightAdder"] . "?</p>";
     echo "<form action='index.php?p=" . ($page+1) . "' method='post'>";
     echo "<input type='hidden' name='id' value='0' />";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[0]] . "'>";
@@ -48,6 +48,12 @@ function quiz() {
 // If all questions have been asked, give option to show score
 // else give option to move to next question
 
+function showScore() {
+  echo "<form action='score.php' method='post'>"
+  echo "<input type='submit' class='btn' name='score' value='Show score'>";
+  echo "</form>"
+}
+
 function restart() {
     echo "<form action='index.php' method='post'>";
     echo "<input type='submit' class='btn' name='restart' value='Take the quiz again'>";
@@ -55,3 +61,9 @@ function restart() {
 }
 
 // Show score
+function score() {
+    global $score;
+    if (isset($_POST['score'])) {
+      echo "<p class='quiz'>Your score is " . $score . " out of 10.</p>";
+    }
+}
