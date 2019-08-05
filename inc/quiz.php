@@ -63,7 +63,5 @@ function restart() {
 // Show score
 function score() {
     global $score;
-    if (isset($_POST['score'])) {
-      echo "<p class='quiz'>Your score is " . $score . " out of 10.</p>";
-    }
+    echo "<p class='quiz'>Your score is " . $score . " out of 10.</p>";
 }
