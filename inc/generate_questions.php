@@ -14,17 +14,16 @@ for ($i = 0; $i <= 9; $i++) {
       $wrongAnswer1 = $answer + rand(-10, 10);
       $wrongAnswer2 = $answer + rand(-10, 10);
       while ($wrongAnswer1 == $answer || $wrongAnswer1 == $wrongAnswer2) {
-        $wrongAnswer1 = $answer + rand(-10, 10)
+        $wrongAnswer1 = $answer + rand(-10, 10);
       }
       while ($wrongAnswer2 == $answer) {
-        $wrongAnswer2 = $answer + rand(-10, 10)
+        $wrongAnswer2 = $answer + rand(-10, 10);
       }
     } else {
       $wrongAnswer1 = $answer + rand(1, 10);
       $wrongAnswer2 = $answer + rand(1, 10);
       while ($wrongAnswer1 == $wrongAnswer2) {
         $wrongAnswer1 = $answer + rand(1, 10);
-        $wrongAnswer2 = $answer + rand(1, 10);
       }
     }
 // Add question and answer to questions array
