@@ -20,6 +20,7 @@ include 'generate_questions.php';
 // Keep track of which questions have been asked
 $page = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
 $score = 0;
+$answers = [];
 if (empty($page)) {
     session_destroy();
     $page = 1;
@@ -31,6 +32,7 @@ if (empty($page)) {
 function quiz() {
     global $page;
     global $questions;
+    global $answers;
     $array = ["correctAnswer", "firstIncorrectAnswer", "secondIncorrectAnswer"];
     shuffle($array);
     echo "<p class='breadcrumbs'>Question " . $page . " of 10</p>";
@@ -41,6 +43,16 @@ function quiz() {
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[1]] . "'>";
     echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[2]] . "'>";
     echo "</form>";
+    if (isset($_POST['answer1'])) {
+        $_SESSION['answer1'] = filter_input(INPUT_POST, 'answer1', FILTER_SANITIZE_NUMBER_INT);
+        $answers = [$_SESSION['answer1']];
+    } elseif (isset($_POST['answer2'])) {
+        $_SESSION['answer2'] = filter_input(INPUT_POST, 'answer2', FILTER_SANITIZE_NUMBER_INT);
+        $answers = [$_SESSION['answer2']];
+    } elseif (isset($_POST['answer3'])) {
+        $_SESSION['answer3'] = filter_input(INPUT_POST, 'answer3', FILTER_SANITIZE_NUMBER_INT);
+        $answers = [$_SESSION['answer3']];
+    }
 }
 
 // Toast correct and incorrect answers
