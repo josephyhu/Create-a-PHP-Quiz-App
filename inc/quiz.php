@@ -19,7 +19,6 @@ session_start();
 include 'generate_questions.php';
 // Keep track of which questions have been asked
 $page = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
-$score = 0;
 $answers = [];
 if (empty($page)) {
     session_destroy();
@@ -39,9 +38,10 @@ function quiz() {
     echo "<p class='quiz'>What is " . $questions[$page-1]["leftAdder"] . " + " . $questions[$page-1]["rightAdder"] . "?</p>";
     echo "<form action='index.php?p=" . ($page+1) . "' method='post'>";
     echo "<input type='hidden' name='id' value='0' />";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[0]] . "'>";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[1]] . "'>";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[2]] . "'>";
+    echo "<input type='submit' class='btn' name='answer1' value='" . $questions[$page-1][$array[0]] . "'>";
+    echo "<input type='submit' class='btn' name='answer2' value='" . $questions[$page-1][$array[1]] . "'>";
+    echo "<input type='submit' class='btn' name='answer3' value='" . $questions[$page-1][$array[2]] . "'>";
+    echo "<input type='hidden' name='correct' value='" . $questions[$page-1]['correctAnswer'] . "'>";
     echo "</form>";
     if (isset($_POST['answer1'])) {
         $_SESSION['answer1'] = filter_input(INPUT_POST, 'answer1', FILTER_SANITIZE_NUMBER_INT);
@@ -53,19 +53,30 @@ function quiz() {
         $_SESSION['answer3'] = filter_input(INPUT_POST, 'answer3', FILTER_SANITIZE_NUMBER_INT);
         $answers = [$_SESSION['answer3']];
     }
-    foreach ($answers as $answer) {
-      if ($answer == $questions[$page-1]['correctAnswer']) {
-        echo 'Correct';
-      } else {
-        echo 'Incorrect';
-      }
+    if (isset($_POST['correct'])) {
+        $_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
     }
+    checkAnswer();
 }
 
 // Toast correct and incorrect answers
 // Keep track of answers
 // If all questions have been asked, give option to show score
 // else give option to move to next question
+
+function checkAnswer() {
+    global $answers;
+    $score = 0;
+    foreach ($answers as $answer) {
+        if ($answer == $_SESSION['correct']) {
+            echo 'Correct!';
+            $score = $score + 1;
+        } else {
+            echo 'Incorrect!';
+        }
+    }
+    return $score;
+}
 
 function showScore() {
   echo "<form action='score.php' method='post'>";
@@ -81,6 +92,6 @@ function restart() {
 
 // Show score
 function score() {
-    global $score;
+    $score = checkAnswer();
     echo "<p class='quiz'>Your score is " . $score . " out of 10.</p>";
 }
