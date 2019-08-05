@@ -53,6 +53,13 @@ function quiz() {
         $_SESSION['answer3'] = filter_input(INPUT_POST, 'answer3', FILTER_SANITIZE_NUMBER_INT);
         $answers = [$_SESSION['answer3']];
     }
+    foreach ($answers as $answer) {
+      if ($answer == $questions[$page-1]['correctAnswer']) {
+        echo 'Correct';
+      } else {
+        echo 'Incorrect';
+      }
+    }
 }
 
 // Toast correct and incorrect answers
@@ -61,9 +68,9 @@ function quiz() {
 // else give option to move to next question
 
 function showScore() {
-  echo "<form action='score.php' method='post'>"
+  echo "<form action='score.php' method='post'>";
   echo "<input type='submit' class='btn' name='score' value='Show score'>";
-  echo "</form>"
+  echo "</form>";
 }
 
 function restart() {
