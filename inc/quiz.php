@@ -23,6 +23,9 @@ if (empty($page)) {
     session_destroy();
     $page = 1;
 }
+if (!isset($_SESSION['score'])) {
+    $_SESSION['score'] = 0;
+}
 
 // Show which question they are on
 // Show random question
@@ -68,12 +71,12 @@ function checkAnswer() {
     foreach ($answers as $answer) {
         if ($answer == $_SESSION['correct']) {
             echo 'Correct!';
-            ++$score;
+            ++$_SESSION['score'];
         } else {
             echo 'Incorrect!';
         }
     }
-    return $score;
+    return $_SESSION['score'];
 }
 
 function showScore() {
