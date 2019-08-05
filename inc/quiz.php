@@ -19,7 +19,6 @@ session_start();
 include 'generate_questions.php';
 // Keep track of which questions have been asked
 $page = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
-$answers = [];
 if (empty($page)) {
     session_destroy();
     $page = 1;
@@ -31,7 +30,6 @@ if (empty($page)) {
 function quiz() {
     global $page;
     global $questions;
-    global $answers;
     $array = ["correctAnswer", "firstIncorrectAnswer", "secondIncorrectAnswer"];
     shuffle($array);
     echo "<p class='breadcrumbs'>Question " . $page . " of 10</p>";
@@ -43,6 +41,17 @@ function quiz() {
     echo "<input type='submit' class='btn' name='answer3' value='" . $questions[$page-1][$array[2]] . "'>";
     echo "<input type='hidden' name='correct' value='" . $questions[$page-1]['correctAnswer'] . "'>";
     echo "</form>";
+    checkAnswer();
+}
+
+// Toast correct and incorrect answers
+// Keep track of answers
+// If all questions have been asked, give option to show score
+// else give option to move to next question
+
+function checkAnswer() {
+    $answers = [];
+    $score = 0;
     if (isset($_POST['answer1'])) {
         $_SESSION['answer1'] = filter_input(INPUT_POST, 'answer1', FILTER_SANITIZE_NUMBER_INT);
         $answers = [$_SESSION['answer1']];
@@ -56,21 +65,10 @@ function quiz() {
     if (isset($_POST['correct'])) {
         $_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
     }
-    checkAnswer();
-}
-
-// Toast correct and incorrect answers
-// Keep track of answers
-// If all questions have been asked, give option to show score
-// else give option to move to next question
-
-function checkAnswer() {
-    global $answers;
-    $score = 0;
     foreach ($answers as $answer) {
         if ($answer == $_SESSION['correct']) {
             echo 'Correct!';
-            $score = $score + 1;
+            ++$score;
         } else {
             echo 'Incorrect!';
         }
@@ -88,6 +86,7 @@ function restart() {
     echo "<form action='index.php' method='post'>";
     echo "<input type='submit' class='btn' name='restart' value='Take the quiz again'>";
     echo "</form>";
+    checkAnswer();
 }
 
 // Show score
