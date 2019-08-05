@@ -11,16 +11,20 @@ for ($i = 0; $i <= 9; $i++) {
 // Get incorrect answers within 10 numbers either way of correct answer
 // Make sure it is a unique answer
     if ($answer > 10) {
+      $wrongAnswer1 = $answer + rand(-10, 10);
+      $wrongAnswer2 = $answer + rand(-10, 10);
       while ($wrongAnswer1 == $answer || $wrongAnswer1 == $wrongAnswer2) {
-        $wrongAnswer1 = rand(-10, 10)
+        $wrongAnswer1 = $answer + rand(-10, 10)
       }
       while ($wrongAnswer2 == $answer) {
-        $wrongAnswer2 = rand(-10, 10)
+        $wrongAnswer2 = $answer + rand(-10, 10)
       }
     } else {
+      $wrongAnswer1 = $answer + rand(1, 10);
+      $wrongAnswer2 = $answer + rand(1, 10);
       while ($wrongAnswer1 == $wrongAnswer2) {
-        $wrongAnswer1 = rand(1, 10);
-        $wrongAnswer2 = rand(1, 10);
+        $wrongAnswer1 = $answer + rand(1, 10);
+        $wrongAnswer2 = $answer + rand(1, 10);
       }
     }
 // Add question and answer to questions array
