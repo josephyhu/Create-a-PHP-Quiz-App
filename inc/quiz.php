@@ -54,7 +54,6 @@ function quiz() {
 
 function checkAnswer() {
     $answers = [];
-    $score = 0;
     if (isset($_POST['answer1'])) {
         $_SESSION['answer1'] = filter_input(INPUT_POST, 'answer1', FILTER_SANITIZE_NUMBER_INT);
         $answers = [$_SESSION['answer1']];
