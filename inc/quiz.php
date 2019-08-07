@@ -69,19 +69,13 @@ function checkAnswer() {
     }
     foreach ($answers as $answer) {
         if ($answer == $_SESSION['correct']) {
-            echo 'Correct!';
+            echo "<p class='quiz'>Correct!</p>";
             ++$_SESSION['score'];
         } else {
-            echo 'Incorrect!';
+            echo "<p class='quiz'>Incorrect! The correct answer was " . $_SESSION['correct'] . ".</p>";
         }
     }
     return $_SESSION['score'];
-}
-
-function showScore() {
-  echo "<form action='score.php' method='post'>";
-  echo "<input type='submit' class='btn' name='score' value='Show score'>";
-  echo "</form>";
 }
 
 function restart() {

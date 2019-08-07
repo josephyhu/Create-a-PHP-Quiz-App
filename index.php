@@ -12,7 +12,7 @@
     <div class="container">
       <div id="quiz-box">
         <?php if ($page <= 10) { quiz(); } ?>
-        <?php if ($page > 10) { showScore() . "<br>" . restart(); } ?>
+        <?php if ($page > 10) { score() . "<br>" . restart(); } ?>
       </div>
     </div>
   </body>
