@@ -78,6 +78,12 @@ function checkAnswer() {
     return $_SESSION['score'];
 }
 
+function showScore() {
+  echo "<form action='score.php' method='post'>";
+  echo "<input type='submit' class='btn' name='score' value='Show score'>";
+  echo "</form>";
+}
+
 function restart() {
     echo "<form action='index.php' method='post'>";
     echo "<input type='submit' class='btn' name='restart' value='Take the quiz again'>";
