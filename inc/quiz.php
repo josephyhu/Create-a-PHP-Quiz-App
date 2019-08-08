@@ -69,10 +69,10 @@ function checkAnswer() {
     }
     foreach ($answers as $answer) {
         if ($answer == $_SESSION['correct']) {
-            echo "<p class='quiz'>Correct!</p>";
+            echo "Correct!";
             ++$_SESSION['score'];
         } else {
-            echo "<p class='quiz'>Incorrect! The correct answer was " . $_SESSION['correct'] . ".</p>";
+            echo "Incorrect! The correct answer was " . $_SESSION['correct'] . ".";
         }
     }
     return $_SESSION['score'];
