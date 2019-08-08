@@ -35,6 +35,7 @@ function quiz() {
     global $questions;
     $array = ["correctAnswer", "firstIncorrectAnswer", "secondIncorrectAnswer"];
     shuffle($array);
+    checkAnswer();
     echo "<p class='breadcrumbs'>Question " . $page . " of 10</p>";
     echo "<p class='quiz'>What is " . $questions[$page-1]["leftAdder"] . " + " . $questions[$page-1]["rightAdder"] . "?</p>";
     echo "<form action='index.php?p=" . ($page+1) . "' method='post'>";
@@ -44,7 +45,6 @@ function quiz() {
     echo "<input type='submit' class='btn' name='answer3' value='" . $questions[$page-1][$array[2]] . "'>";
     echo "<input type='hidden' name='correct' value='" . $questions[$page-1]['correctAnswer'] . "'>";
     echo "</form>";
-    checkAnswer();
 }
 
 // Toast correct and incorrect answers
@@ -69,26 +69,19 @@ function checkAnswer() {
     }
     foreach ($answers as $answer) {
         if ($answer == $_SESSION['correct']) {
-            echo "Correct!";
+            echo "<p class='breadcrumbs'>Correct!</p>";
             ++$_SESSION['score'];
         } else {
-            echo "Incorrect! The correct answer was " . $_SESSION['correct'] . ".";
+            echo "<p class='breadcrumbs'>Incorrect! The correct answer was " . $_SESSION['correct'] . ".</p>";
         }
     }
     return $_SESSION['score'];
-}
-
-function showScore() {
-  echo "<form action='score.php' method='post'>";
-  echo "<input type='submit' class='btn' name='score' value='Show score'>";
-  echo "</form>";
 }
 
 function restart() {
     echo "<form action='index.php' method='post'>";
     echo "<input type='submit' class='btn' name='restart' value='Take the quiz again'>";
     echo "</form>";
-    checkAnswer();
 }
 
 // Show score

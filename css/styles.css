@@ -16,6 +16,10 @@ body {
   text-align: center;
 }
 
+.breadcrumbs {
+  font-size: 2rem;
+}
+
 .quiz {
   font-size: 4rem;
   font-weight: 400;
