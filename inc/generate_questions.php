@@ -33,3 +33,17 @@ for ($i = 0; $i <= 9; $i++) {
     $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1;
     $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2;
 }
+
+for ($i = 0, $j = 0; $i <= 9, $j <= 9; $i++, $j++) {
+    while ($i != $j) {
+        while (($questions[$i]["leftAdder"] == $questions[$j]["leftAdder"] &&
+                $questions[$i]["rightAdder"] == $questions[$j]["rightAdder"]) ||
+               ($questions[$i]["leftAdder"] == $questions[$j]["rightAdder"] &&
+                $questions[$i]["rightAdder"] == $questions[$j]["leftAdder"])) {
+                    $a = rand(1, 100);
+                    $b = rand(1, 100);
+                    $questions[$i]["leftAdder"] = $a;
+                    $questions[$i]["rightAdder"] = $b;
+        }
+    }
+}
