@@ -28,32 +28,6 @@ body {
   margin: 0;
 }
 
-.source {
-  font-size: 1.25rem;;
-  letter-spacing: 0.05em;
-  line-height: 1.1;
-  text-align: right;
-  margin-right: 4em;
-}
-
-.source:before {
-  content: "—";
-}
-
-.citation {
-  font-style: italic;
-}
-
-.citation:before {
-  content: ", ";
-  font-style: normal;
-}
-
-.year:before {
-  content: ", ";
-  font-style: normal;
-}
-
 .btn {
   width: 12em;
   display: inline-block;
