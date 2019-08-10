@@ -1,7 +1,7 @@
 <?php
 // Generate random questions
 $questions = [];
-$operators = ["+", "-", "*"];
+$operators = [" + ", " - ", " * "];
 $pick = rand(0, 2);
 // Loop for required number of questions
 for ($i = 0; $i <= 9; $i++) {
@@ -10,17 +10,17 @@ for ($i = 0; $i <= 9; $i++) {
     $b = rand(1, 100);
 // Calculate correct answer
     switch($operators[$pick]) {
-        case "+":
+        case " + ":
             $answer = $a + $b;
             break;
-        case "-":
+        case " - ":
             $answer = $a - $b;
             break;
-        case "*":
+        case " * ":
             $answer = $a * $b;
             break;
     }
-    if ($operators[$pick] == "+" || $operators[$pick] == "*") {
+    if ($operators[$pick] == " + " || $operators[$pick] == " * ") {
         if ($answer > 10) {
             $wrongAnswer1 = $answer + rand(-10, 10);
             $wrongAnswer2 = $answer + rand(-10, 10);
