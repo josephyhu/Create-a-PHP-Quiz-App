@@ -11,7 +11,8 @@
   <body>
     <div class="container">
       <div id="quiz-box">
-        <?php choice(); ?>
+        <?php if ($page <= 10) { quiz(); } ?>
+        <?php if ($page > 10) { score() . "<br>" . restart(); } ?>
       </div>
     </div>
   </body>
