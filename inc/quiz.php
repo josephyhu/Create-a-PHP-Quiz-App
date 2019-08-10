@@ -27,36 +27,20 @@ if (!isset($_SESSION['score'])) {
     $_SESSION['score'] = 0;
 }
 
-function choice() {
-  echo "<p class='quiz'>Choose the type of quiz below.</p>";
-  echo "<form action='start.php' method='post'>";
-  echo "<input type='submit' class='btn' name='add' value='Addition'>";
-  echo "<input type='submit' class='btn' name='subtract' value='Subtraction'>";
-  echo "<input type='submit' class='btn' name='multiply' value='Multiplication'>";
-  echo "<input type='submit' class='btn' name='mix' value='Mix'>";
-  echo "</form>";
-}
-
 // Show which question they are on
 // Show random question
 // Shuffle answer buttons
 function quiz() {
     global $page;
     global $questions;
+    global $operators;
+    global $pick;
     $array = ["correctAnswer", "firstIncorrectAnswer", "secondIncorrectAnswer"];
     shuffle($array);
     checkAnswer();
     echo "<p class='breadcrumbs'>Question " . $page . " of 10</p>";
-    if (isset($_POST['add'])) {
-        echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . " + " . $questions[$page-1]["rightOperand"] . "?</p>";
-    }
-    if (isset($_POST['subtract'])) {
-        echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . " - " . $questions[$page-1]["rightOperand"] . "?</p>";
-    }
-    if (isset($_POST['multiply'])) {
-        echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . " * " . $questions[$page-1]["rightOperand"] . "?</p>";
-    }
-    echo "<form action='start.php?p=" . ($page+1) . "' method='post'>";
+    echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . $operators[$pick] . $questions[$page-1]["rightOperand"] . "?</p>";
+    echo "<form action='index.php?p=" . ($page+1) . "' method='post'>";
     echo "<input type='hidden' name='id' value='0' />";
     echo "<input type='submit' class='btn' name='answer1' value='" . $questions[$page-1][$array[0]] . "'>";
     echo "<input type='submit' class='btn' name='answer2' value='" . $questions[$page-1][$array[1]] . "'>";
