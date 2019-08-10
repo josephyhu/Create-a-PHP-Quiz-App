@@ -43,13 +43,29 @@ for ($i = 0; $i <= 9; $i++) {
         $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1;
         $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2;
     } else {
-        $wrongAnswer1 = $answer + rand(-10, 10);
-        $wrongAnswer2 = $answer + rand(-10, 10);
-        while ($wrongAnswer1 == $answer || $wrongAnswer1 == $wrongAnswer2) {
+        if (abs($answer) > 10) {
             $wrongAnswer1 = $answer + rand(-10, 10);
-        }
-        while ($wrongAnswer2 == $answer) {
             $wrongAnswer2 = $answer + rand(-10, 10);
+            while ($wrongAnswer1 == $answer || $wrongAnswer1 == $wrongAnswer2) {
+                $wrongAnswer1 = $answer + rand(-10, 10);
+            }
+            while ($wrongAnswer2 == $answer) {
+                $wrongAnswer2 = $answer + rand(-10, 10);
+            }
+        } else {
+            if ($a < $b) {
+                $wrongAnswer1 = $answer + rand(-10, -1);
+                $wrongAnswer2 = $answer + rand(-10, -1);
+                while ($wrongAnswer1 = $wrongAnswer2) {
+                    $wrongAnswer1 = $answer + rand(-10, -1);
+                }
+            } else {
+                $wrongAnswer1 = $answer + rand(1, 10);
+                $wrongAnswer2 = $answer + rand(1, 10);
+                while ($wrongAnswer1 = $wrongAnswer2) {
+                    $wrongAnswer1 = $answer + rand(1, 10);
+                }
+            }
         }
     }
         $questions[$i]["leftOperand"] = $a;
