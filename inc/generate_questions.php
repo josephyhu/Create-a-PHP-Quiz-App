@@ -27,7 +27,7 @@ for ($i = 0; $i <= 9; $i++) {
             $wrongAnswer1 = $answer + rand(-10, 10);
         }
         while ($wrongAnswer2 == $answer) {
-            $wrongAnswer2 + $answer + rand(-10, 10);
+            $wrongAnswer2 = $answer + rand(-10, 10);
         }
     } elseif ($answer >= -10 && $answer < 0) {
         $wrongAnswer1 = $answer + rand(-10, -1);
