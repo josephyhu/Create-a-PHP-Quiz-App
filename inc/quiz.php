@@ -14,9 +14,9 @@
  *  3. auto generate questions
  *
  */
+include 'generate_questions.php';
 session_start();
 // Include questions
-include 'generate_questions.php';
 // Keep track of which questions have been asked
 $page = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
 if (empty($page)) {
