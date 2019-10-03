@@ -11,34 +11,16 @@ for ($i = 0; $i <= 9; $i++) {
 // Calculate correct answer
     switch($operators[$pick]) {
         case " + ":
-            while ($a == -$b || $a == 0) {
-                $a = rand(-100, 100);
-            }
-            while ($b == 0) {
-                $b = rand(-100, 100);
-            }
             $answer = $a + $b;
             break;
         case " - ":
-            while ($a == $b || $a == 0) {
-                $a = rand(-100, 100);
-            }
-            while ($b == 0) {
-                $b = rand(-100, 100);
-            }
             $answer = $a - $b;
             break;
         case " * ":
-            while ($a == 0) {
-                $a = rand(-100, 100);
-            }
-            while ($b == 0) {
-                $b = rand(-100, 100);
-            }
             $answer = $a * $b;
             break;
     }
-    if (abs($answer) > 10) {
+    if (abs($answer) > 10 || $answer == 0) {
         $wrongAnswer1 = $answer + rand(-10, 10);
         $wrongAnswer2 = $answer + rand(-10, 10);
         while ($wrongAnswer1 == $answer || $wrongAnswer1 == $wrongAnswer2) {
