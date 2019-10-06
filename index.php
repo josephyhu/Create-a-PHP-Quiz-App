@@ -4,7 +4,8 @@
         <a href="addition.php">Addition</a>
         <a href="subtraction.php">Subtraction</a>
         <a href="multiplication.php">Multiplication</a>
-        <a href="all.php">All Three</a>
+        <a href="division.php">Division</a>
+        <a href="all.php">All</a>
       </div>
     </div>
 <?php include 'inc/footer.php'; ?>

@@ -1,13 +1,13 @@
 <?php
 // Generate random questions
 $questions = [];
-$operators = [" + ", " - ", " * "];
-$pick = rand(0, 2);
+$operators = [" + ", " - ", " * ", " / "];
+$pick = rand(0, 3);
 // Loop for required number of questions
 for ($i = 0; $i <= 9; $i++) {
 // Get random numbers to add
-    $a = rand(-100, 100);
-    $b = rand(-100, 100);
+    $a = rand(1, 100);
+    $b = rand(1, 100);
 // Calculate correct answer
     switch($operators[$pick]) {
         case " + ":
@@ -18,6 +18,10 @@ for ($i = 0; $i <= 9; $i++) {
             break;
         case " * ":
             $answer = $a * $b;
+            break;
+        case " / ":
+            $answer = intdiv($a, $b);
+            $remainder = $a % $b;
             break;
     }
     if (abs($answer) > 10 || $answer == 0) {
@@ -44,7 +48,13 @@ for ($i = 0; $i <= 9; $i++) {
     }
         $questions[$i]["leftOperand"] = $a;
         $questions[$i]["rightOperand"] = $b;
-        $questions[$i]["correctAnswer"] = $answer;
-        $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1;
-        $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2;
+        if ($operators[$pick] != " / ") {
+            $questions[$i]["correctAnswer"] = $answer;
+            $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1;
+            $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2;
+        } else {
+            $questions[$i]["correctAnswer"] = $answer . " R " . $remainder;
+            $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1 . " R " . $remainder;
+            $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2 . " R " . $remainder;
+        }
 }
