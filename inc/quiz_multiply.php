@@ -14,7 +14,7 @@
  *  3. auto generate questions
  *
  */
-include 'generate_questions.php';
+include 'generate_questions_multiply.php';
 session_start();
 // Include questions
 // Keep track of which questions have been asked
@@ -33,14 +33,12 @@ if (!isset($_SESSION['score'])) {
 function quiz() {
     global $page;
     global $questions;
-    global $operators;
-    global $pick;
     $array = ["correctAnswer", "firstIncorrectAnswer", "secondIncorrectAnswer"];
     shuffle($array);
     checkAnswer();
     echo "<p class='breadcrumbs'>Question " . $page . " of 10</p>";
-    echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . $operators[$pick] . $questions[$page-1]["rightOperand"] . "?</p>";
-    echo "<form action='all.php?p=" . ($page+1) . "' method='post'>";
+    echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . " * " . $questions[$page-1]["rightOperand"] . "?</p>";
+    echo "<form action='multiplication.php?p=" . ($page+1) . "' method='post'>";
     echo "<input type='hidden' name='id' value='0' />";
     echo "<input type='submit' class='btn' name='answer1' value='" . $questions[$page-1][$array[0]] . "'>";
     echo "<input type='submit' class='btn' name='answer2' value='" . $questions[$page-1][$array[1]] . "'>";
@@ -81,7 +79,7 @@ function checkAnswer() {
 }
 
 function restart() {
-    echo "<form action='all.php' method='post'>";
+    echo "<form action='multiplication.php' method='post'>";
     echo "<input type='submit' class='btn' name='restart' value='Take the quiz again'>";
     echo "</form>";
 }

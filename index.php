@@ -1,19 +1,10 @@
-<?php include 'inc/quiz.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Math Quiz</title>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-    <link rel='stylesheet' href='css/normalize.css'>
-    <link rel='stylesheet' href='css/styles.css'>
-  </head>
-  <body>
+<?php include 'inc/header.php'; ?>
     <div class="container">
       <div id="quiz-box">
-        <?php if ($page <= 10) { quiz(); } ?>
-        <?php if ($page > 10) { score() . "<br>" . restart(); } ?>
+        <a href="addition.php">Addition</a>
+        <a href="subtraction.php">Subtraction</a>
+        <a href="multiplication.php">Multiplication</a>
+        <a href="all.php">All Three</a>
       </div>
     </div>
-  </body>
-</html>
+<?php include 'inc/footer.php'; ?>

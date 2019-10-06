@@ -5,6 +5,14 @@ body {
   background-color: #0000FF;
 }
 
+h1 {
+    text-align: center;
+}
+
+a {
+    color: yellow;
+}
+
 #quiz-box {
   position: absolute;
   top: 20%;
