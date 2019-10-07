@@ -40,9 +40,9 @@ function quiz() {
     echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . " * " . $questions[$page-1]["rightOperand"] . "?</p>";
     echo "<form action='multiplication.php?p=" . ($page+1) . "' method='post'>";
     echo "<input type='hidden' name='id' value='0' />";
-    echo "<input type='submit' class='btn' name='answer1' value='" . $questions[$page-1][$array[0]] . "'>";
-    echo "<input type='submit' class='btn' name='answer2' value='" . $questions[$page-1][$array[1]] . "'>";
-    echo "<input type='submit' class='btn' name='answer3' value='" . $questions[$page-1][$array[2]] . "'>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[0]] . "'>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[1]] . "'>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[2]] . "'>";
     echo "<input type='hidden' name='correct' value='" . $questions[$page-1]['correctAnswer'] . "'>";
     echo "</form>";
 }
@@ -53,27 +53,17 @@ function quiz() {
 // else give option to move to next question
 
 function checkAnswer() {
-    $answers = [];
-    if (isset($_POST['answer1'])) {
-        $_SESSION['answer1'] = filter_input(INPUT_POST, 'answer1', FILTER_SANITIZE_NUMBER_INT);
-        $answers = [$_SESSION['answer1']];
-    } elseif (isset($_POST['answer2'])) {
-        $_SESSION['answer2'] = filter_input(INPUT_POST, 'answer2', FILTER_SANITIZE_NUMBER_INT);
-        $answers = [$_SESSION['answer2']];
-    } elseif (isset($_POST['answer3'])) {
-        $_SESSION['answer3'] = filter_input(INPUT_POST, 'answer3', FILTER_SANITIZE_NUMBER_INT);
-        $answers = [$_SESSION['answer3']];
+    if (isset($_POST['answer'])) {
+        $_SESSION['answer'] = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_NUMBER_INT);
     }
     if (isset($_POST['correct'])) {
         $_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
     }
-    foreach ($answers as $answer) {
-        if ($answer == $_SESSION['correct']) {
-            echo "<p class='breadcrumbs'>Correct!</p>";
-            ++$_SESSION['score'];
-        } else {
-            echo "<p class='breadcrumbs'>Incorrect! The correct answer was " . $_SESSION['correct'] . ".</p>";
-        }
+    if ($_SESSION['answer'] == $_SESSION['correct']) {
+        echo "<p class='breadcrumbs'>Correct!</p>";
+        ++$_SESSION['score'];
+    } else {
+        echo "<p class='breadcrumbs'>Incorrect! The correct answer was " . $_SESSION['correct'] . ".</p>";
     }
     return $_SESSION['score'];
 }
