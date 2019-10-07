@@ -37,7 +37,9 @@ function quiz() {
     global $pick;
     $array = ["correctAnswer", "firstIncorrectAnswer", "secondIncorrectAnswer"];
     shuffle($array);
-    checkAnswer();
+    if ($page > 1) {
+        checkAnswer();
+    }
     echo "<p class='breadcrumbs'>Question " . $page . " of 10</p>";
     echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . $operators[$pick] . $questions[$page-1]["rightOperand"] . "?</p>";
     echo "<form action='all.php?p=" . ($page+1) . "' method='post'>";
