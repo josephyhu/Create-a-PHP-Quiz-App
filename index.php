@@ -1,4 +1,7 @@
-<?php include 'inc/header.php'; ?>
+<?php
+$pageTitle = "Home";
+
+include 'inc/header.php'; ?>
     <div class="container">
       <div id="quiz-box">
         <nav>

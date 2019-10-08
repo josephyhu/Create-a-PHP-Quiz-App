@@ -1,4 +1,6 @@
 <?php
+$pageTitle = "Division";
+
 include 'inc/quiz_divide.php';
 include 'inc/header.php'; ?>
     <div class="container">

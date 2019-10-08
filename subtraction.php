@@ -1,4 +1,6 @@
 <?php
+$pageTitle = "Subtraction";
+
 include 'inc/quiz_subtract.php';
 include 'inc/header.php'; ?>
     <div class="container">

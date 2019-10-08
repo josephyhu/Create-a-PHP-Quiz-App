@@ -1,4 +1,6 @@
 <?php
+$pageTitle = "Addition";
+
 include 'inc/quiz_add.php';
 include 'inc/header.php'; ?>
     <div class="container">

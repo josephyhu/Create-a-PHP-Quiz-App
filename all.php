@@ -1,4 +1,6 @@
 <?php
+$pageTitle = "All";
+
 include 'inc/quiz.php';
 include 'inc/header.php'; ?>
     <div class="container">

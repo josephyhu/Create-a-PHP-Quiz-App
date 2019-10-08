@@ -1,4 +1,6 @@
 <?php
+$pageTitle = "Multiplication";
+
 include 'inc/quiz_multiply.php';
 include 'inc/header.php'; ?>
     <div class="container">
