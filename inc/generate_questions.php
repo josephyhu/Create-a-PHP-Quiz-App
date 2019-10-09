@@ -20,8 +20,8 @@ for ($i = 0; $i <= 9; $i++) {
             $answer = $a * $b;
             break;
         case " / ":
-            $answer = intdiv($a, $b);
-            $remainder = $a % $b;
+            $answer = intdiv(max($a, $b), min($a, $b));
+            $remainder = max($a, $b) % min($a, $b);
             break;
     }
     if ($answer > 10) {
@@ -40,8 +40,13 @@ for ($i = 0; $i <= 9; $i++) {
             $wrongAnswer = $answer + rand(1, 10);
         }
     }
-        $questions[$i]["leftOperand"] = $a;
-        $questions[$i]["rightOperand"] = $b;
+        if ($operators[$pick] == " - " || $operators[$pick] == " / ") {
+            $questions[$i]["leftOperand"] = max($a, $b);
+            $questions[$i]["rightOperand"] = min($a, $b);
+        } else {
+            $questions[$i]["leftOperand"] = $a;
+            $questions[$i]["rightOperand"] = $b;
+        }
         if ($operators[$pick] != " / ") {
             $questions[$i]["correctAnswer"] = $answer;
             $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1;
