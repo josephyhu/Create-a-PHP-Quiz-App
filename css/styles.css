@@ -34,6 +34,16 @@ footer {
   font-size: 2rem;
 }
 
+.correct {
+  color: #00FF00;
+  font-size: 2rem;
+}
+
+.incorrect {
+  color: #FF0000;
+  font-size: 2rem;
+}
+
 .quiz {
   font-size: 4rem;
   font-weight: 400;

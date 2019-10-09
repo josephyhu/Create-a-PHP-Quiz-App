@@ -62,10 +62,10 @@ function checkAnswer() {
         $_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
     }
     if ($_SESSION['answer'] == $_SESSION['correct']) {
-        echo "<p class='breadcrumbs'>Correct!</p>";
+        echo "<p class='correct'>Correct!</p>";
         ++$_SESSION['score'];
     } else {
-        echo "<p class='breadcrumbs'>Incorrect! The correct answer was " . $_SESSION['correct'] . ".</p>";
+        echo "<p class='incorrect'>Incorrect! The correct answer was " . $_SESSION['correct'] . ".</p>";
     }
     return $_SESSION['score'];
 }
