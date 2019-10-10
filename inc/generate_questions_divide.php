@@ -11,10 +11,10 @@ for ($i = 0; $i <= 9; $i++) {
     $remainder = max($a, $b) % min($a, $b);
     $wrongAnswer1 = abs($answer + rand(-10, 10));
     $wrongAnswer2 = abs($answer + rand(-10, 10));
-    while ($wrongAnswer1 == $answer || $wrongAnswer1 == $wrongAnswer2) {
+    while ($wrongAnswer1 == $answer || $wrongAnswer1 == $wrongAnswer2 || $wrongAnswer1 == 0) {
         $wrongAnswer1 = abs($answer + rand(-10, 10));
     }
-    while ($wrongAnswer2 == $answer) {
+    while ($wrongAnswer2 == $answer || $wrongAnswer2 == 0) {
         $wrongAnswer2 = abs($answer + rand(-10, 10));
     }
     $questions[$i]["leftOperand"] = max($a, $b);
