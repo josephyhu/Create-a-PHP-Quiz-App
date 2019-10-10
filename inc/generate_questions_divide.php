@@ -17,9 +17,12 @@ for ($i = 0; $i <= 9; $i++) {
     while ($wrongAnswer2 == $answer || $wrongAnswer2 == 0) {
         $wrongAnswer2 = abs($answer + rand(-10, 10));
     }
+    $wrongRemainder1 = abs($remainder + rand(-10, 10));
+    $wrongRemainder2 = abs($remainder + rand(-10, 10));
+    $remainders = [$remainder, $wrongRemainder1, $wrongRemainder2];
     $questions[$i]["leftOperand"] = max($a, $b);
     $questions[$i]["rightOperand"] = min($a, $b);
     $questions[$i]["correctAnswer"] = $answer . " R " . $remainder;
-    $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1 . " R " . $remainder;
-    $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2 . " R " . $remainder;
+    $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1 . " R " . $remainders[rand(0 ,2)];
+    $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2 . " R " . $remainders[rand(0, 2)];
 }
