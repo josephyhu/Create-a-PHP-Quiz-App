@@ -33,22 +33,22 @@ for ($i = 0; $i <= 9; $i++) {
         $wrongAnswer2 = abs($answer + rand(-10, 10));
     }
     if ($operators[$pick] == " - " || $operators[$pick] == " / ") {
-        $questions[$i]["leftOperand"] = max($a, $b);
-        $questions[$i]["rightOperand"] = min($a, $b);
+        $questions["leftOperand"] = max($a, $b);
+        $questions["rightOperand"] = min($a, $b);
     } else {
-        $questions[$i]["leftOperand"] = $a;
-        $questions[$i]["rightOperand"] = $b;
+        $questions["leftOperand"] = $a;
+        $questions["rightOperand"] = $b;
     }
     if ($operators[$pick] != " / ") {
-        $questions[$i]["correctAnswer"] = $answer;
-        $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1;
-        $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2;
+        $questions["correctAnswer"] = $answer;
+        $questions["firstIncorrectAnswer"] = $wrongAnswer1;
+        $questions["secondIncorrectAnswer"] = $wrongAnswer2;
     } else {
         $wrongRemainder1 = abs($remainder + rand(-10, 10));
         $wrongRemainder2 = abs($remainder + rand(-10, 10));
         $remainders = [$remainder, $wrongRemainder1, $wrongRemainder2];
-        $questions[$i]["correctAnswer"] = $answer . " R " . $remainder;
-        $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1 . " R " . $remainders[rand(0, 2)];
-        $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2 . " R " . $remainders[rand(0, 2)];
+        $questions["correctAnswer"] = $answer . " R " . $remainder;
+        $questions["firstIncorrectAnswer"] = $wrongAnswer1 . " R " . $remainders[rand(0, 2)];
+        $questions["secondIncorrectAnswer"] = $wrongAnswer2 . " R " . $remainders[rand(0, 2)];
     }
 }

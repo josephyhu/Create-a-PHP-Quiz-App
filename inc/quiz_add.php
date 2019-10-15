@@ -39,13 +39,13 @@ function quiz() {
         checkAnswer();
     }
     echo "<p class='breadcrumbs'>Question " . $page . " of 10</p>";
-    echo "<p class='quiz'>What is " . $questions[$page-1]["leftOperand"] . " + " . $questions[$page-1]["rightOperand"] . "?</p>";
+    echo "<p class='quiz'>What is " . $questions["leftOperand"] . " + " . $questions["rightOperand"] . "?</p>";
     echo "<form action='addition.php?p=" . ($page+1) . "' method='post'>";
     echo "<input type='hidden' name='id' value='0' />";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[0]] . "'>";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[1]] . "'>";
-    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$page-1][$array[2]] . "'>";
-    echo "<input type='hidden' name='correct' value='" . $questions[$page-1]['correctAnswer'] . "'>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$array[0]] . "'>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$array[1]] . "'>";
+    echo "<input type='submit' class='btn' name='answer' value='" . $questions[$array[2]] . "'>";
+    echo "<input type='hidden' name='correct' value='" . $questions['correctAnswer'] . "'>";
     echo "</form>";
 }
 

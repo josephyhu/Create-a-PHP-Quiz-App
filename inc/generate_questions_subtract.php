@@ -16,9 +16,9 @@ for ($i = 0; $i <= 9; $i++) {
     while ($wrongAnswer2 == $answer || $wrongAnswer2 == 0) {
         $wrongAnswer2 = abs($answer + rand(-10, 10));
     }
-    $questions[$i]["leftOperand"] = max($a, $b);
-    $questions[$i]["rightOperand"] = min($a, $b);
-    $questions[$i]["correctAnswer"] = $answer;
-    $questions[$i]["firstIncorrectAnswer"] = $wrongAnswer1;
-    $questions[$i]["secondIncorrectAnswer"] = $wrongAnswer2;
+    $questions["leftOperand"] = max($a, $b);
+    $questions["rightOperand"] = min($a, $b);
+    $questions["correctAnswer"] = $answer;
+    $questions["firstIncorrectAnswer"] = $wrongAnswer1;
+    $questions["secondIncorrectAnswer"] = $wrongAnswer2;
 }
